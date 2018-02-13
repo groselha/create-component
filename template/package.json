@@ -1,0 +1,17 @@
+{
+  "name": "<%= name.packageName %>",
+  "version": "0.0.0",
+  "description": "<%= name.componentName %> component",
+  "main": "lib/index.js",
+  "module": "index.js",
+  "devDependencies": {
+    "prop-types": "^15.0.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.0.0",
+    "react": ">=15.0.0 || ^16.0.0",
+    "react-dom": ">=15.0.0 || ^16.0.0"
+  }
+}
