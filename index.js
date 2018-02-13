@@ -24,7 +24,11 @@ const init = async () => {
       name
     },
     filters: {
-      '*.test.js': !test
+      '*.test.js': test && !enzyme,
+      '*.test.enzyme.js': enzyme,
+    },
+    move: {
+      '*.test.enzyme.js': filepath => filepath.replace('.enzyme', '')
     }
   }
 

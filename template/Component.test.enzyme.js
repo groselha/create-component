@@ -1,13 +1,12 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 
 import <%= name.componentName %> from './<%= name.componentName %>';
 
 describe('<%= name.componentName %>', () => {
   it('renders <%= name.componentName %>', () => {
-    const component = renderer.create(<<%= name.componentName %> />);
-    const tree = component.toJSON();
+    const component = shallow(<<%= name.componentName %> />);
 
-    expect(tree).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 });
