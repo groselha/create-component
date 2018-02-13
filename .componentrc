@@ -1,0 +1,11 @@
+{
+  "skip": ["test", "enzyme", "storybook", "package"],
+  defaults: {
+    test: true,
+    enzyme: true,
+    css: false,
+    storybook: true,
+    readme: false,
+    package: true
+  }
+}

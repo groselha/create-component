@@ -1,39 +1,35 @@
 const path = require('path');
 const promptly = require('promptly');
-const copy = require('kopy');
+const paramCase = require('param-case');
 const argv = require('minimist')(process.argv.slice(2));
 
+const copy = require('./copy');
+const getConfig = require('./get-config');
 const getName = require('./get-name');
 const getTest = require('./get-test');
 const getEnzyme = require('./get-enzyme');
 const getCSS = require('./get-css');
 const getReadme = require('./get-readme');
+const getStorybook = require('./get-storybook');
+const getPackageName = require('./get-package-name');
+const getPackageJSON = require('./get-package-json');
 
 const init = async () => {
-  const name = await getName();
-  const test = await getTest(true);
-  const enzyme = await getEnzyme(false, test);
-  const css = await getCSS('css');
-  const readme = await getReadme(true);
+  const { defaults, skip } = await getConfig();
+  console.log(defaults, skip);
 
-  const templateDir = path.join(process.cwd(), 'template');
-  const outDir = path.join(process.cwd(), 'out');
-  const options = {
-    clean: true,
-    data: {
-      name
-    },
-    filters: {
-      '*.test.js': test && !enzyme,
-      '*.test.enzyme.js': enzyme,
-    },
-    move: {
-      '*.test.enzyme.js': filepath => filepath.replace('.enzyme', '')
-    }
-  }
+  const fields = {};
+  fields.componentName = await getName();
+  fields.packageJSON = await getPackageJSON(defaults.package);
+  fields.packageName = await getPackageName(paramCase(fields.componentName), fields.packageJSON);
+  fields.test = await getTest(defaults.test);
+  fields.enzyme = await getEnzyme(defaults.enzyme, fields.test);
+  fields.css = await getCSS(defaults.css);
+  fields.storybook = await getStorybook(defaults.storybook);
+  fields.readme = await getReadme(defaults.readme);
 
   try {
-    const data = await copy(templateDir, outDir, options);
+    await copy(fields);
   } catch (err) {
     console.log(err.stack);
   }
