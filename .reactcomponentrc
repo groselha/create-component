@@ -1,5 +1,4 @@
 {
-  "path": "src/components/Button",
   "test": {
     "skip": true,
     "defaults": true
