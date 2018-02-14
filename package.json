@@ -1,8 +1,13 @@
 {
-  "name": "create-component",
+  "name": "create-react-component",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "format": "prettier *.js **/*.js --write",
+    "component": "create-component"
+  },
   "dependencies": {
     "chalk": "^2.3.1",
     "copy-template-dir": "^1.3.0",
@@ -13,5 +18,8 @@
     "param-case": "^2.1.1",
     "pascal-case": "^2.0.1",
     "promptly": "^3.0.3"
+  },
+  "devDependencies": {
+    "prettier": "^1.10.2"
   }
 }

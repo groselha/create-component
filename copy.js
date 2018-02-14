@@ -1,16 +1,16 @@
-const path = require('path');
-const kopy = require('kopy');
+const path = require('path')
+const kopy = require('kopy')
 
-module.exports = async (fields) => {
-  const templateDir = path.join(process.cwd(), 'template');
-  const outDir = path.join(process.cwd(), 'out');
+module.exports = async fields => {
+  const templateDir = path.join(process.cwd(), 'template')
+  const outDir = path.join(process.cwd(), 'out')
   const options = {
     clean: true,
     data: {
       css: fields.css,
       name: {
         packageName: fields.packageName,
-        componentName: fields.componentName
+        componentName: fields.componentName,
       },
     },
     filters: {
@@ -25,8 +25,8 @@ module.exports = async (fields) => {
       '*.enzyme.js': filepath => filepath.replace('.enzyme', ''),
       '*.css': filepath => filepath.replace('.css', `.${fields.css}`),
       'Component.*': filepath => filepath.replace('Component', fields.componentName),
-    }
+    },
   }
 
-  return await kopy(templateDir, outDir, options);
+  return await kopy(templateDir, outDir, options)
 }
