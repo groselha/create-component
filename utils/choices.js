@@ -1,4 +1,6 @@
-const { dim } = require('chalk')
+const { dim, reset } = require('chalk')
 
 module.exports = (defaultValue, options) =>
-  options.map(value => (value === defaultValue ? dim(value.toUpperCase()) : value)).join('/')
+  options
+    .map(value => (value === defaultValue ? reset(value.toUpperCase()) : dim(value)))
+    .join(dim('/'))

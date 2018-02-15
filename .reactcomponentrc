@@ -12,7 +12,7 @@
   },
   "css": {
     "skip": true,
-    "defaults": "css"
+    "defaults": "scss"
   },
   "storybook": {
     "skip": true,

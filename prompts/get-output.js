@@ -8,9 +8,11 @@ const label = require('../utils/label')
 const bool = require('../utils/bool')
 
 module.exports = async (fields, config) => {
-  const filePath = changeCase(fields.componentName, config.folderCase)
-  const parentPath = config.parent || ''
-  const output = path.join(config.path, parentPath, filePath)
+  const toFolderCase = val => changeCase(val, config.folderCase)
+  const filePath = toFolderCase(fields.componentName)
+  const parents = config.parent ? config.parent.split('/').map(toFolderCase) : []
+  const parentPath = config.parent ? changeCase(config.parent, config.folderCase) : ''
+  const output = path.join(config.path, ...parents, filePath)
   const printOutput = `  ${underline(path.join(dim(__dirname), output))}`
 
   console.log(yellow(`\n${fields.componentName} will be created at:`))
