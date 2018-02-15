@@ -22,10 +22,7 @@ const init = async () => {
   let output
 
   try {
-    fields.componentName = await skippable({
-      defaults: config.componentName,
-      skip: Boolean(config.componentName),
-    })(getName, config)
+    fields.componentName = await getName(config)
     fields.packageJSON = await skippable(config.package)(getPackageJSON)
     fields.packageName = await skippable(config.package, {
       prevent: fields.packageJSON,

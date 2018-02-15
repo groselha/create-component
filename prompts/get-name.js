@@ -12,6 +12,11 @@ const validator = value => {
 
 module.exports = async ({ componentName }) => {
   const defaultValue = changeCase(componentName, 'pascalCase')
+
+  if (componentName) {
+    return defaultValue
+  }
+
   return await promptly.prompt(label('Component Name:', defaultValue), {
     validator,
     default: defaultValue,

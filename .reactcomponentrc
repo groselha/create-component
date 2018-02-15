@@ -1,7 +1,7 @@
 {
   "path": "out",
-  "folderCase": "paramCase",
-  "fileCase": "paramCase",
+  "folderCase": "pascalCase",
+  "fileCase": "pascalCase",
   "test": {
     "skip": true,
     "defaults": true

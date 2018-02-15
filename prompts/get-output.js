@@ -9,7 +9,8 @@ const bool = require('../utils/bool')
 
 module.exports = async (fields, config) => {
   const filePath = changeCase(fields.componentName, config.folderCase)
-  const output = path.join(config.path, filePath)
+  const parentPath = config.parent || ''
+  const output = path.join(config.path, parentPath, filePath)
   const printOutput = `  ${underline(path.join(dim(__dirname), output))}`
 
   console.log(yellow(`\n${fields.componentName} will be created at:`))
