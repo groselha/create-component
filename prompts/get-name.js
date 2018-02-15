@@ -1,15 +1,19 @@
 const promptly = require('promptly')
-const pascalCase = require('pascal-case')
 
+const changeCase = require('../utils/change-case')
 const label = require('../utils/label')
 
 const validator = value => {
   if (value.length < 2) {
     throw new Error('Min length of 2')
   }
-  return pascalCase(value)
+  return changeCase(value, 'pascalCase')
 }
 
-module.exports = async () => {
-  return await promptly.prompt(label('Component Name:'), { validator })
+module.exports = async ({ componentName }) => {
+  const defaultValue = changeCase(componentName, 'pascalCase')
+  return await promptly.prompt(label('Component Name:', defaultValue), {
+    validator,
+    default: defaultValue,
+  })
 }

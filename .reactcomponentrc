@@ -1,4 +1,7 @@
 {
+  "path": "out",
+  "folderCase": "paramCase",
+  "fileCase": "paramCase",
   "test": {
     "skip": true,
     "defaults": true

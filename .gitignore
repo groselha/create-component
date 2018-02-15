@@ -1,2 +1,7 @@
+# Project dependencies
 node_modules
-out
+.cache/
+# Build directory
+out/
+.DS_Store
+yarn-error.log

@@ -1,1 +1,1 @@
-# <%= name.componentName %>
+# <%= componentName %>

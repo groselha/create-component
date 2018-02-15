@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import <%= name.componentName %> from './<%= name.componentName %>';
+import <%= componentName %> from './<%= fileName %>';
 
-describe('<%= name.componentName %>', () => {
-  it('renders <%= name.componentName %>', () => {
-    const component = shallow(<<%= name.componentName %> />);
+describe('<%= componentName %>', () => {
+  it('renders <%= componentName %>', () => {
+    const component = shallow(<<%= componentName %> />);
 
     expect(component).toMatchSnapshot();
   });

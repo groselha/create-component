@@ -1,6 +1,6 @@
-const { bold, gray } = require('chalk')
+const { bold, dim } = require('chalk')
 
 module.exports = (question, defaults) => {
-  const extra = defaults ? ` (${defaults})` : ''
-  return `${bold(question)}${gray(extra)}`
+  const extra = defaults ? ` (${defaults}${dim(')')}` : ''
+  return `${bold(question)}${dim(extra)}`
 }

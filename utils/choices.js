@@ -1,4 +1,4 @@
-const { white } = require('chalk')
+const { dim } = require('chalk')
 
 module.exports = (defaultValue, options) =>
-  options.map(value => (value === defaultValue ? white(value.toUpperCase()) : value)).join('/')
+  options.map(value => (value === defaultValue ? dim(value.toUpperCase()) : value)).join('/')

@@ -1,7 +1,7 @@
 {
-  "name": "<%= name.packageName %>",
+  "name": "<%= packageName %>",
   "version": "0.0.0",
-  "description": "<%= name.componentName %> component",
+  "description": "<%= componentName %> component",
   "main": "lib/index.js",
   "module": "index.js"
 }

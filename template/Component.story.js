@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import <%= name.componentName %> from './<%= name.componentName %>';
+import <%= componentName %> from './<%= fileName %>';
 
-storiesOf('<%= name.componentName %>', module)
+storiesOf('<%= componentName %>', module)
   .add('default', () => (
-    <<%= name.componentName %> />
+    <<%= componentName %> />
   ));

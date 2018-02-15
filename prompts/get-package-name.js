@@ -1,5 +1,5 @@
 const promptly = require('promptly')
-const paramCase = require('param-case')
+const { paramCase } = require('change-case')
 
 const label = require('../utils/label')
 

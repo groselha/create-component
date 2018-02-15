@@ -1,11 +1,11 @@
 import React from 'react';
 <% if (css) { %>
-import './<%= name.componentName %>.<%= css %>';
+import './<%= fileName %>.<%= css %>';
 <% } %>
-const <%= name.componentName %> = () => (
+const <%= componentName %> = () => (
   <div>
-    <h1><%= name.componentName %></h1>
+    <h1><%= componentName %></h1>
   </div>
 );
 
-export default <%= name.componentName %>;
+export default <%= componentName %>;

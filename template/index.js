@@ -1,1 +1,1 @@
-export { default } from './<%= name.componentName %>'
+export { default } from './<%= fileName %>'

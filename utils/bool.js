@@ -1,11 +1,11 @@
-const { white } = require('chalk')
+const { dim, reset } = require('chalk')
 
 function bool(defaultValue = true) {
-  const yes = defaultValue ? white('Y') : 'y'
-  const no = !defaultValue ? white('N') : 'n'
-  return `${yes}/${no}`
+  const yes = defaultValue ? reset('Y') : dim('y')
+  const no = !defaultValue ? reset('N') : dim('n')
+  return `${yes}${dim('/')}${no}`
 }
 
-bool.toString = defaultValue => (defaultValue ? 'y' : 'n')
+bool.toString = (defaultValue = true) => (defaultValue ? 'y' : 'n')
 
 module.exports = bool
