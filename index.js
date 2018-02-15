@@ -41,9 +41,13 @@ const init = async () => {
 
     output = await getOutput(fields, config)
   } catch (e) {
-    console.log(red('\n× Cancelled by user.'))
-    console.log(e)
-    process.exit(0)
+    if (e.message === 'canceled') {
+      console.log(red('\n× Cancelled by user.'))
+      process.exit(0)
+    } else {
+      throw e
+      process.exit(1)
+    }
   }
 
   try {
