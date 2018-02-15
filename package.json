@@ -14,7 +14,7 @@
     "cosmiconfig": "^4.0.0",
     "fixed-width-string": "^1.0.0",
     "fs-extra": "^5.0.0",
-    "glob-fs": "^0.1.7",
+    "glob": "^7.1.2",
     "jstransformer": "^1.0.0",
     "jstransformer-ejs": "^0.2.0",
     "merge": "^1.2.0",

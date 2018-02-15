@@ -8,7 +8,7 @@ const rename = require('./rename')
 const exclude = require('./exclude')
 
 module.exports = async (fields, config, output) => {
-  const tpl = template(path.join(process.cwd(), 'template/*'), fields)
+  const tpl = template(path.join(__dirname, '..', '..', 'template/*'), fields)
 
   tpl.use(
     transform('package.json', body => {
