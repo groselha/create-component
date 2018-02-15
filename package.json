@@ -1,6 +1,6 @@
 {
   "name": "@groselha/create-component",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "scripts": {
     "lint": "xo src/**/*.js --prettier",
@@ -46,6 +46,9 @@
     }
   },
   "lint-staged": {
-    "*.js": ["xo --fix --prettier", "git add"]
+    "*.js": [
+      "xo --fix --prettier",
+      "git add"
+    ]
   }
 }
