@@ -6,7 +6,7 @@ const argv = require('minimist')(process.argv.slice(2))
 const defaultConfig = require('./default-config')
 const changeCase = require('../utils/change-case')
 
-const explorer = cosmiconfig('reactcomponent')
+const explorer = cosmiconfig('component')
 
 module.exports = async () => {
   let config = defaultConfig

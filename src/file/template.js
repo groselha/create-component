@@ -6,6 +6,7 @@ const ejs = jstransformer(require('jstransformer-ejs'))
 module.exports = (templateFiles, data) => {
   const middlewares = []
 
+  console.log(templateFiles)
   let files = glob.readdirSync(templateFiles).map(filePath => {
     let { body } = ejs.renderFile(filePath, data)
     return {

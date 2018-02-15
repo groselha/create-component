@@ -1,0 +1,11 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "node": "6.10"
+      }
+    ]
+  ],
+  "plugins": ["@babel/plugin-proposal-object-rest-spread", "@babel/plugin-transform-regenerator"]
+}

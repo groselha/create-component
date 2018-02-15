@@ -1,3 +1,5 @@
+require('@babel/polyfill')
+
 const path = require('path')
 const promptly = require('promptly')
 const { red, green } = require('chalk')
@@ -16,7 +18,7 @@ const getOutput = require('./prompts/get-output')
 const skippable = require('./utils/skippable')
 const changeCase = require('./utils/change-case')
 
-const init = async () => {
+module.exports = async () => {
   const config = await getConfig()
   const fields = {}
   let output
@@ -26,6 +28,7 @@ const init = async () => {
     fields.packageJSON = await skippable(config.package)(getPackageJSON)
     fields.packageName = await skippable(config.package, {
       prevent: fields.packageJSON,
+      skip: !fields.packageJSON,
     })(getPackageName, fields)
     fields.fileName = changeCase(fields.componentName, config.fileCase)
     fields.test = await skippable(config.test)(getTest)
@@ -37,12 +40,12 @@ const init = async () => {
     fields.readme = await skippable(config.readme)(getReadme)
 
     output = await getOutput(fields, config)
-  } catch (e) {
-    if (e.message === 'canceled') {
+  } catch (err) {
+    if (err.message === 'canceled') {
       console.log(red('\n× Cancelled by user.'))
       process.exit(0)
     } else {
-      throw e
+      throw err
       process.exit(1)
     }
   }
@@ -52,9 +55,8 @@ const init = async () => {
     console.log(green(`\n⚡ File created successfuly!`))
     process.exit(0)
   } catch (err) {
-    console.log(red('\n× Something went wrong :(.'))
+    console.log(red('\n× Something went wrong :('))
+    throw err
     process.exit(1)
   }
 }
-
-init()
