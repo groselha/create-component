@@ -1,5 +1,5 @@
 {
-  "name": "create-component",
+  "name": "@xyz/create-component",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
