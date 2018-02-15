@@ -10,14 +10,14 @@ const validator = value => {
   return changeCase(value, 'pascalCase')
 }
 
-module.exports = async ({ componentName }) => {
+module.exports = ({ componentName }) => {
   const defaultValue = changeCase(componentName, 'pascalCase')
 
   if (componentName) {
     return defaultValue
   }
 
-  return await promptly.prompt(label('Component Name:', defaultValue), {
+  return promptly.prompt(label('Component Name:', defaultValue), {
     validator,
     default: defaultValue,
   })

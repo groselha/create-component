@@ -1,7 +1,5 @@
 require('@babel/polyfill')
 
-const path = require('path')
-const promptly = require('promptly')
 const { red, green } = require('chalk')
 
 const createFiles = require('./file/create-files')
@@ -43,10 +41,8 @@ module.exports = async () => {
   } catch (err) {
     if (err.message === 'canceled') {
       console.log(red('\n× Cancelled by user.'))
-      process.exit(0)
     } else {
       throw err
-      process.exit(1)
     }
   }
 
@@ -57,6 +53,5 @@ module.exports = async () => {
   } catch (err) {
     console.log(red('\n× Something went wrong :('))
     throw err
-    process.exit(1)
   }
 }

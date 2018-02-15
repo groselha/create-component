@@ -12,7 +12,6 @@ module.exports = async (fields, config) => {
   const cwd = process.cwd()
   const filePath = toFolderCase(fields.componentName)
   const parents = config.parent ? config.parent.split('/').map(toFolderCase) : []
-  const parentPath = config.parent ? changeCase(config.parent, config.folderCase) : ''
   const truncatedPath = fixedWidth(cwd, Math.min(cwd.length, 30), { align: 'right' })
   const relativePath = path.join(config.path, ...parents, filePath)
   const printOutput = path.join(dim(truncatedPath), reset(relativePath))
@@ -30,5 +29,5 @@ module.exports = async (fields, config) => {
     return output
   }
 
-  throw new Error()
+  throw new Error('canceled')
 }

@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
+    "lint": "xo src/**/*.js --prettier",
     "build": "babel src -d lib",
-    "format": "prettier *.js **/*.js --write"
+    "precommit": "lint-staged"
   },
   "bin": "bin/index.js",
   "dependencies": {
@@ -28,6 +29,23 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.40",
     "@babel/preset-env": "^7.0.0-beta.39",
     "babel-plugin-transform-regenerator": "^6.26.0",
-    "prettier": "^1.10.2"
+    "eslint": "^4.17.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.1.0",
+    "prettier": "^1.10.2",
+    "xo": "^0.20.1"
+  },
+  "xo": {
+    "pretier": true,
+    "semicolon": false,
+    "space": 2,
+    "rules": {
+      "unicorn/no-process-exit": 0
+    }
+  },
+  "lint-staged": {
+    "*.js": ["xo --fix --prettier", "git add"]
   }
 }

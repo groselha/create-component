@@ -3,11 +3,11 @@ const { paramCase } = require('change-case')
 
 const label = require('../utils/label')
 
-module.exports = async (config, { componentName, packageJSON }) => {
+module.exports = (config, { componentName, packageJSON }) => {
   const packageName = typeof packageJSON === 'string' ? packageJSON : paramCase(componentName)
   const defaultValue = config.scope ? `@${config.scope}/${packageName}` : packageName
 
-  return await promptly.prompt(label("And what's the package name?", defaultValue), {
+  return promptly.prompt(label("And what's the package name?", defaultValue), {
     default: defaultValue,
   })
 }

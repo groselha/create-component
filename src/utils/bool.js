@@ -2,7 +2,7 @@ const { dim, reset } = require('chalk')
 
 function bool(defaultValue = true) {
   const yes = defaultValue ? reset('Y') : dim('y')
-  const no = !defaultValue ? reset('N') : dim('n')
+  const no = defaultValue ? dim('n') : reset('N')
   return `${yes}${dim('/')}${no}`
 }
 
