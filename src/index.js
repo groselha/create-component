@@ -41,6 +41,7 @@ module.exports = async () => {
   } catch (err) {
     if (err.message === 'canceled') {
       console.log(red('\n× Cancelled by user.'))
+      process.exit(0)
     } else {
       throw err
     }
