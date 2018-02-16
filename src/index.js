@@ -23,10 +23,13 @@ module.exports = async () => {
 
   try {
     fields.componentName = await getName(config)
-    fields.packageJSON = await skippable(config.package)(getPackageJSON)
+    fields.packageJSON = await skippable(config.package, {
+      skip: Boolean(config.parent),
+      defaults: config.parent ? false : undefined,
+    })(getPackageJSON)
     fields.packageName = await skippable(config.package, {
       prevent: fields.packageJSON,
-      skip: !fields.packageJSON,
+      skip: !fields.packageJSON || config.parent,
     })(getPackageName, fields)
     fields.fileName = changeCase(fields.componentName, config.fileCase)
     fields.test = await skippable(config.test)(getTest)

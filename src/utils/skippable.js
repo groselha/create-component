@@ -1,6 +1,6 @@
-module.exports = (config, { prevent, skip } = {}) => async (prompt, ...rest) => {
+module.exports = (config, { prevent, skip, defaults } = {}) => async (prompt, ...rest) => {
   if ((!config.skip && !skip) || prevent) {
     return prompt(config, ...rest)
   }
-  return config.defaults
+  return typeof defaults === 'undefined' ? config.defaults : defaults
 }
