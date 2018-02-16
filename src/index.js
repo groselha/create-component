@@ -3,7 +3,6 @@ require('@babel/polyfill')
 const { red, green } = require('chalk')
 
 const createFiles = require('./file/create-files')
-const getConfig = require('./config/get-config')
 const getName = require('./prompts/get-name')
 const getTest = require('./prompts/get-test')
 const getEnzyme = require('./prompts/get-enzyme')
@@ -16,8 +15,7 @@ const getOutput = require('./prompts/get-output')
 const skippable = require('./utils/skippable')
 const changeCase = require('./utils/change-case')
 
-module.exports = async () => {
-  const config = await getConfig()
+module.exports = async config => {
   const fields = {}
   let output
 

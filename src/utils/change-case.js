@@ -1,8 +1,9 @@
 const changeCase = require('change-case')
 
 module.exports = (value, type) => {
-  if (changeCase[type] && typeof changeCase[type] === 'function') {
-    return changeCase[type](value)
+  const method = changeCase.camelCase(`${type} case`)
+  if (changeCase[method] && typeof changeCase[method] === 'function') {
+    return changeCase[method](value)
   }
   throw new Error(`Invalid case style: ${type}`)
 }

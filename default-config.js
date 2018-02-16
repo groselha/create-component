@@ -1,7 +1,7 @@
 module.exports = {
   path: 'src/components',
-  fileCase: 'pascalCase',
-  folderCase: 'pascalCase',
+  fileCase: 'pascal',
+  folderCase: 'pascal',
   test: {
     defaults: true,
     skip: false,

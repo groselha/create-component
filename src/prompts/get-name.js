@@ -7,11 +7,11 @@ const validator = value => {
   if (value.length < 2) {
     throw new Error('Min length of 2')
   }
-  return changeCase(value, 'pascalCase')
+  return changeCase(value, 'pascal')
 }
 
 module.exports = ({ componentName }) => {
-  const defaultValue = changeCase(componentName, 'pascalCase')
+  const defaultValue = changeCase(componentName, 'pascal')
 
   if (componentName) {
     return defaultValue
