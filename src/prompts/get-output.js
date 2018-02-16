@@ -1,7 +1,7 @@
 const path = require('path')
 const promptly = require('promptly')
-const fixedWidth = require('fixed-width-string')
-const { reset, dim, yellow, underline } = require('chalk')
+const truncate = require('cli-truncate')
+const { dim, yellow, underline } = require('chalk')
 
 const changeCase = require('../utils/change-case')
 const label = require('../utils/label')
@@ -12,11 +12,11 @@ module.exports = async (fields, config) => {
   const cwd = process.cwd()
   const filePath = toFolderCase(fields.componentName)
   const parents = config.parent ? config.parent.split('/').map(toFolderCase) : []
-  const truncatedPath = fixedWidth(cwd, Math.min(cwd.length, 30), { align: 'right' })
   const relativePath = path.join(config.path, ...parents, filePath)
-  const printOutput = path.join(dim(truncatedPath), reset(relativePath))
-
-  const output = path.join(process.cwd(), relativePath)
+  const printOutput = truncate(path.join(dim(cwd), relativePath), 40, {
+    position: 'start',
+  })
+  const output = path.join(cwd, relativePath)
 
   console.log(yellow(`\n${fields.componentName} will be created at:`))
   console.log(`  ${underline(printOutput)}`)
