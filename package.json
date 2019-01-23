@@ -1,7 +1,11 @@
 {
   "name": "@groselha/create-component",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
+  "author": "Lucas Motta <mail@lucasmotta.com> (https://groselha.xyz)",
+  "contributors": [
+    "Silvio Paganini <silvio@fluuu.id> (https://s2paganini.com)"
+  ],
   "scripts": {
     "lint": "xo src/**/*.js lib/*.js --prettier",
     "build": "babel src -d lib",
